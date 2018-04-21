@@ -1,0 +1,39 @@
+{
+	"name": "docker-js-starter",
+	"description": "Starter for Dockerized JavaScript development environment",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": "github:haydenbr/docker-js-starter",
+	"dockerHubRepository": "haydenbr/docker-js-starter",
+	"scripts": {
+		"start": "docker-compose up app",
+		"build": "",
+		"bump": "./scripts/bump.js",
+		"commit-latest": "docker container commit app-task haydenbr/docker-js-starter:latest",
+		"dep:add": "yarn task yarn add",
+		"dep:rm": "yarn task yarn rm",
+		"docker-build": "docker build -t $(./scripts/current-tag.js) .",
+		"docker-push": "docker push $(./scripts/current-tag.js)",
+		"major": "yarn bump major",
+		"minor": "yarn bump minor",
+		"patch": "yarn bump patch",
+		"postbuild:browser": "./scripts/cache-busting.js",
+		"postcommit-latest": "yarn task ./scripts/docker-compose-latest.js",
+		"postdep:add": "yarn commit-latest",
+		"postdep:rm": "yarn commit-latest",
+		"postdocker-build": "yarn docker-push",
+		"precommit": "pretty-quick --staged",
+		"pretask": "docker container rm -v app-task || true",
+		"serve": "node ./src/server.js",
+		"task": "docker-compose run --name app-task --no-deps app-task"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"chalk": "^2.3.0",
+		"cordova": "8.0.0",
+		"husky": "^0.14.3",
+		"js-yaml": "^3.10.0",
+		"prettier": "^1.10.2",
+		"pretty-quick": "^1.2.3"
+	}
+}
