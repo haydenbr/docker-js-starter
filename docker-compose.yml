@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   app:
-    image: 'haydenbr/docker-js-starter:0.0.0'
+    image: 'haydenbr/docker-js-starter:0.0.1'
     ports:
       - '3000:3000'
     volumes:

@@ -1,7 +1,7 @@
 {
 	"name": "docker-js-starter",
 	"description": "Starter for Dockerized JavaScript development environment",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"license": "MIT",
 	"repository": "github:haydenbr/docker-js-starter",
 	"dockerHubRepository": "haydenbr/docker-js-starter",
