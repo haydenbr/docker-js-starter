@@ -4,8 +4,6 @@ const chalk = require('chalk');
 const copyDependencies = require('./copy-dependencies');
 const dockerUtil = require('./docker-utilities');
 const gitUtil = require('./git-utilities');
-const syncConfigXmlVersion = require('./sync-config-version');
-const syncBitbucketPipelineImageVersion = require('./sync-bitbucket-pipeline-image-version');
 const syncComposeImageVersion = require('./docker-compose-image-version').syncComposeImageVersion;
 const util = require('./script-utilities');
 
@@ -50,12 +48,7 @@ function gitPush() {
 function shouldBump() {}
 
 function syncVersionNumbers() {
-	return Promise.all([
-		copyDependencies(),
-		syncConfigXmlVersion(),
-		syncBitbucketPipelineImageVersion(),
-		syncComposeImageVersion(),
-	]);
+	return Promise.all([copyDependencies(), syncComposeImageVersion()]);
 }
 
 const versionBump = process.argv[2];
